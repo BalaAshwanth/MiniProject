@@ -24,12 +24,12 @@ public class ProjectServiceImpl implements ProjectService {
 
     public ProjectDto updateProjectDetails(ProjectDto projectDto) {
         return ProjectHelper.projectToProjectDto(projectRepo.save(ProjectHelper
-                .projectDtoToProject(projectDto, true)), true);
+                .projectDtoToProject(projectDto)));
     }
 
     public ProjectDto insertProjectDetails(ProjectDto projectDto) {
         return ProjectHelper.projectToProjectDto(projectRepo.save(ProjectHelper
-                .projectDtoToProject(projectDto, false)), true);
+                .projectDtoToProject(projectDto)));
     }
 
     public boolean deleteProjectDetails(int projectId) {
@@ -42,12 +42,9 @@ public class ProjectServiceImpl implements ProjectService {
 
     public List<ProjectDto> getAllProjectDetails() {
         List<Project> projects = projectRepo.findAll();
-        List<ProjectDto> projectsDto = null;
-        if (projects != null) {
-            projectsDto = new ArrayList<ProjectDto>();
-            for (Project presentProject : projects) {
-                projectsDto.add(ProjectHelper.projectToProjectDto(presentProject, true));
-            }
+        List<ProjectDto> projectsDto = new ArrayList<>();
+        for (Project presentProject : projects) {
+            projectsDto.add(ProjectHelper.projectToProjectDto(presentProject));
         }
         return projectsDto;
     }

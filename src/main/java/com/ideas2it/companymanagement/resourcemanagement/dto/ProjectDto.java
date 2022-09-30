@@ -1,5 +1,7 @@
 package com.ideas2it.companymanagement.resourcemanagement.dto;
 
+import com.ideas2it.companymanagement.employeemanagement.dto.EmployeeDto;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -17,7 +19,7 @@ public class ProjectDto {
 
     private EmployeeDto employee;
 
-    private List<EmployeeDto> employees = new ArrayList<Employee>();
+    private List<EmployeeDto> employees = new ArrayList<>();
 
     public int getId() {
         return id;

@@ -1,6 +1,8 @@
 package com.ideas2it.companymanagement.resourcemanagement.entity;
 
 
+import com.ideas2it.companymanagement.employeemanagement.entity.Employee;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.ArrayList;
