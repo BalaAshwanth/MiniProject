@@ -18,6 +18,7 @@ public class ProjectServiceImpl implements ProjectService {
     public ProjectServiceImpl(ProjectRepo projectRepo) {
         this.projectRepo = projectRepo;
     }
+
     public ProjectDto getProjectDetails(int projectId) {
         return ProjectHelper.projectToProjectDto(projectRepo.findById(projectId).orElse(null));
     }

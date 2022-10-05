@@ -6,6 +6,7 @@ import lombok.Data;
 @Data
 public class AssetDetailsDto {
 
+    private int id;
     private String assetName;
     private String serialNumber;
     private AssetTypeDto assetDto;

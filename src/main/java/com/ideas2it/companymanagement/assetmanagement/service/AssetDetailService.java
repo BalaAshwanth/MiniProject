@@ -10,7 +10,7 @@ public interface AssetDetailService {
 
     AssetDetailsDto getAssetDetails(int id);
 
-    boolean deleteAssetDetails(int id) ;
+    boolean deleteAssetDetails(int id);
 
     AssetDetailsDto updateAssetDetails(AssetDetailsDto assetDetailsDto);
 

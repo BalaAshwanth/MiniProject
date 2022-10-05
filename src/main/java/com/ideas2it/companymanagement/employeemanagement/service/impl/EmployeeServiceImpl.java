@@ -2,15 +2,11 @@ package com.ideas2it.companymanagement.employeemanagement.service.impl;
 
 import com.ideas2it.companymanagement.employeemanagement.dto.EmployeeDto;
 import com.ideas2it.companymanagement.employeemanagement.helper.EmployeeHelper;
-import com.ideas2it.companymanagement.employeemanagement.entity.Employee;
 import com.ideas2it.companymanagement.employeemanagement.repository.EmployeeRepository;
 import com.ideas2it.companymanagement.employeemanagement.service.EmployeeService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -69,6 +65,7 @@ public class EmployeeServiceImpl implements EmployeeService {
      * </p>
      */
     public EmployeeDto updateEmployeeDetails(EmployeeDto employeeDto) {
-        return EmployeeHelper.employeeToEmployeeDto(employeeRepository.save(EmployeeHelper.employeeDtoToEmployee(employeeDto)));
+        return EmployeeHelper.employeeToEmployeeDto(employeeRepository
+                .save(EmployeeHelper.employeeDtoToEmployee(employeeDto)));
     }
 }

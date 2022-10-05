@@ -1,40 +1,35 @@
-package com.ideas2it.companymanagement.assetmanagement.entity;
+package com.ideas2it.companymanagement.seatmanagement.entity;
 
 import com.ideas2it.companymanagement.employeemanagement.entity.Employee;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import java.io.Serializable;
 
+/**
+ * The persistent class for the allocation_details database table.
+ */
 @Entity
-@Table(name = "asset_details")
-@Setter
-@Getter
-public class AssetDetails {
+@Table(name = "allocation_details")
+@Data
+public class Seat implements Serializable {
 
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "asset_name")
-    private String assetName;
-
-    @Column(name = "serial_number")
-    private String serialNumber;
-
+    @Column(name = "seat_number")
+    private String seatNumber;
     @OneToOne
-    @JoinColumn(name = "asset_id", referencedColumnName = "id")
-    private AssetType assetType;
-
-    @ManyToOne
     @JoinColumn(name = "employee_id", referencedColumnName = "id")
     private Employee employee;
 

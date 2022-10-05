@@ -1,15 +1,16 @@
 package com.ideas2it.companymanagement.resourcemanagement.dto;
 
 import com.ideas2it.companymanagement.employeemanagement.dto.EmployeeDto;
+import lombok.Data;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The persistent class for the project database table.
- *
  */
 
+@Data
 public class ProjectDto {
     private int id;
 
@@ -17,47 +18,7 @@ public class ProjectDto {
 
     private String projectName;
 
-    private EmployeeDto employee;
+    private EmployeeDto employeeDto;
 
-    private List<EmployeeDto> employees = new ArrayList<>();
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getProjectDescription() {
-        return projectDescription;
-    }
-
-    public void setProjectDescription(String projectDescription) {
-        this.projectDescription = projectDescription;
-    }
-
-    public String getProjectName() {
-        return projectName;
-    }
-
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
-    }
-
-    public EmployeeDto getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(EmployeeDto employee) {
-        this.employee = employee;
-    }
-
-    public List<EmployeeDto> getEmployees() {
-        return employees;
-    }
-
-    public void setEmployees(List<EmployeeDto> employees) {
-        this.employees = employees;
-    }
+    private List<EmployeeDto> employeesDto = new ArrayList<>();
 }

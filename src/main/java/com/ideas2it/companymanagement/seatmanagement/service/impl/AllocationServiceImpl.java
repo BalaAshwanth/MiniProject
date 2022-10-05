@@ -1,8 +1,8 @@
 package com.ideas2it.companymanagement.seatmanagement.service.impl;
 
-import com.ideas2it.companymanagement.seatmanagement.dto.AllocationDto;
-import com.ideas2it.companymanagement.seatmanagement.entity.Allocation;
-import com.ideas2it.companymanagement.seatmanagement.helper.AllocationHelper;
+import com.ideas2it.companymanagement.seatmanagement.dto.SeatDto;
+import com.ideas2it.companymanagement.seatmanagement.entity.Seat;
+import com.ideas2it.companymanagement.seatmanagement.helper.SeatHelper;
 import com.ideas2it.companymanagement.seatmanagement.repository.AllocationRepository;
 import com.ideas2it.companymanagement.seatmanagement.service.AllocationService;
 import org.springframework.stereotype.Service;
@@ -19,15 +19,15 @@ public class AllocationServiceImpl implements AllocationService {
         this.allocationRepository = allocationRepository;
     }
 
-    public AllocationDto insertSeatAllocation(AllocationDto allocationDto) {
-        return AllocationHelper.changeSeatAllocationToDto(allocationRepository.save(AllocationHelper.changeDtoToAllocationDetail(allocationDto)));
+    public SeatDto insertSeatAllocation(SeatDto allocationDto) {
+        return SeatHelper.changeSeatAllocationToDto(allocationRepository.save(SeatHelper.changeDtoToAllocationDetail(allocationDto)));
     }
 
-    public AllocationDto getSeatById(int id) {
-        AllocationDto allocationDto = null;
-        Optional<Allocation> allocationDetail = allocationRepository.findById(id);
+    public SeatDto getSeatById(int id) {
+        SeatDto allocationDto = null;
+        Optional<Seat> allocationDetail = allocationRepository.findById(id);
         if (allocationDetail.isPresent()) {
-            allocationDto = AllocationHelper.changeSeatAllocationToDto(allocationDetail.get());
+            allocationDto = SeatHelper.changeSeatAllocationToDto(allocationDetail.get());
         }
         return allocationDto;
     }
@@ -40,13 +40,13 @@ public class AllocationServiceImpl implements AllocationService {
         return false;
     }
 
-    public AllocationDto updateSeat(AllocationDto allocationDto) {
-        return AllocationHelper.changeSeatAllocationToDto(allocationRepository.save(AllocationHelper.changeDtoToAllocationDetail(allocationDto)));
+    public SeatDto updateSeat(SeatDto allocationDto) {
+        return SeatHelper.changeSeatAllocationToDto(allocationRepository.save(SeatHelper.changeDtoToAllocationDetail(allocationDto)));
     }
 
-    public List<AllocationDto> getSeatDetails() {
+    public List<SeatDto> getSeatDetails() {
         return allocationRepository.findAll().stream()
-                .map(AllocationHelper::changeSeatAllocationToDto).collect(Collectors.toList());
+                .map(SeatHelper::changeSeatAllocationToDto).collect(Collectors.toList());
     }
 }
 

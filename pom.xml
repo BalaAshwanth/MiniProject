@@ -11,9 +11,9 @@
 	<groupId>com.ideas2it</groupId>
 	<artifactId>companymanagement</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
-	<name>companymanagement</name>
-	<description>Mini project for Spring Boot</description>
+	<packaging>jar</packaging>
+	<name>company-management</name>
+	<description>Company Management</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
@@ -31,11 +31,6 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

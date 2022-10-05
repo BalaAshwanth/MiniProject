@@ -11,7 +11,7 @@ public class DatabaseConfiguration {
 
     @Bean
     public DataSource getDataSource() {
-        DataSourceBuilder<?> dataSourceBuilder = DataSourceBuilder.create();
+        DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
         dataSourceBuilder.driverClassName("com.mysql.cj.jdbc.Driver");
         dataSourceBuilder.url("jdbc:mysql://localhost:3306/company_management");
         dataSourceBuilder.username("root");
@@ -19,7 +19,6 @@ public class DatabaseConfiguration {
         return dataSourceBuilder.build();
 
     }
-
 
 
 }

@@ -30,11 +30,11 @@ public class AssetServiceImpl implements AssetService {
 
     @Override
     public boolean deleteAsset(int id) {
-       if (assetRepo.existsById(id)) {
-           assetRepo.deleteById(id);
-           return true;
-       }
-       return false;
+        if (assetRepo.existsById(id)) {
+            assetRepo.deleteById(id);
+            return true;
+        }
+        return false;
     }
 
     @Override

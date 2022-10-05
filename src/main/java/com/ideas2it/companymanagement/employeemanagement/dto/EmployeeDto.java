@@ -1,14 +1,18 @@
 package com.ideas2it.companymanagement.employeemanagement.dto;
 
-import com.ideas2it.companymanagement.assetmanagement.entity.AssetDetails;
-import com.ideas2it.companymanagement.employeemanagement.entity.Role;
-import com.ideas2it.companymanagement.resourcemanagement.entity.Project;
-import com.ideas2it.companymanagement.seatmanagement.entity.Allocation;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.ideas2it.companymanagement.assetmanagement.dto.AssetDetailsDto;
+import com.ideas2it.companymanagement.resourcemanagement.dto.ProjectDto;
+import com.ideas2it.companymanagement.seatmanagement.dto.SeatDto;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class EmployeeDto {
 
     private int id;
@@ -21,8 +25,10 @@ public class EmployeeDto {
     private String designation;
     private LocalDate dateOfJoining;
     private int experience;
-    private Allocation seat;
-    private AssetDetails assetDetails;
-    private Project project;
-    private Role role;
+    private int Age;
+    private SeatDto seatDto;
+    private List<AssetDetailsDto> assetDetailsDto = new ArrayList<>();
+    private ProjectDto projectDto;
+    private RoleDto roleDto;
+
 }

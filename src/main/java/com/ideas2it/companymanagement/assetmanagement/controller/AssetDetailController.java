@@ -2,7 +2,14 @@ package com.ideas2it.companymanagement.assetmanagement.controller;
 
 import com.ideas2it.companymanagement.assetmanagement.dto.AssetDetailsDto;
 import com.ideas2it.companymanagement.assetmanagement.service.AssetDetailService;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -17,7 +24,7 @@ public class AssetDetailController {
     }
 
     @PostMapping
-    private AssetDetailsDto insertAssetDetails(AssetDetailsDto assetDetailsDto) {
+    private AssetDetailsDto insertAssetDetails(@RequestBody AssetDetailsDto assetDetailsDto) {
         return assetDetailService.setAssertDetails(assetDetailsDto);
     }
 
@@ -27,7 +34,7 @@ public class AssetDetailController {
     }
 
     @PutMapping
-    private AssetDetailsDto updateAssetDetails(AssetDetailsDto assetDetailsDto) {
+    private AssetDetailsDto updateAssetDetails(@RequestBody AssetDetailsDto assetDetailsDto) {
         return assetDetailService.updateAssetDetails(assetDetailsDto);
     }
 
