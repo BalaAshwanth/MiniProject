@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.ideas2it.companymanagement.employeemanagement.entity.Employee;
 import lombok.Data;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,6 +32,7 @@ public class Seat implements Serializable {
 
     @Column(name = "seat_number")
     private String seatNumber;
+
     @OneToOne
     @JoinColumn(name = "employee_id", referencedColumnName = "id")
     private Employee employee;

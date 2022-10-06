@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "asset")
@@ -27,7 +28,7 @@ public class AssetType {
     @Column(name = "asset_type")
     private String assetType;
 
-    @OneToOne(mappedBy = "assetType")
-    private AssetDetails assetDetails;
+//    @OneToOne(mappedBy = "assetType")
+//    private AssetDetails assetDetails;
 }
 

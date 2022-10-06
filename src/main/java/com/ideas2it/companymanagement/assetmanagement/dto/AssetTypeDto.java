@@ -10,6 +10,6 @@ public class AssetTypeDto {
 
     private int id;
     private String assetType;
-    private AssetDetailsDto assetDetailsDto;
+    //private AssetDetailsDto assetDetailsDto;
 
 }

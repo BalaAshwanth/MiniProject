@@ -33,7 +33,7 @@ public class AssetDetails {
     @Column(name = "serial_number")
     private String serialNumber;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "asset_id", referencedColumnName = "id")
     private AssetType assetType;
 

@@ -36,6 +36,7 @@ public class ProjectHelper {
                 employeeDto.setExperience(experience);
                 int age = DateUtil.getYearBetweenDate(employee.getDateOfBirth());
                 employeeDto.setAge(age);
+                employeeDto.setProjectDto(projectDto);
                 projectDto.setEmployeeDto(employeeDto);
             }
             List<EmployeeDto> employeesDto = new ArrayList<>();
@@ -44,7 +45,7 @@ public class ProjectHelper {
                 EmployeeDto employeeDto = new EmployeeDto();
                 if (employee != null) {
                     if (employee.getId() != 0) {
-                        employeeDto.setId(employee.getId());
+                        employeeDto.setId(employeeDetails.getId());
                     }
                     employeeDto.setEmployeeId(employeeDetails.getEmployeeId());
                     employeeDto.setEmployeeName(employeeDetails.getEmployeeName());
@@ -89,6 +90,7 @@ public class ProjectHelper {
                 employee.setExperience(experience);
                 int age = DateUtil.getYearBetweenDate(employeeDto.getDateOfBirth());
                 employee.setAge(age);
+                employee.setProject(project);
                 project.setEmployee(employee);
             }
             List<Employee> employees = new ArrayList<>();
