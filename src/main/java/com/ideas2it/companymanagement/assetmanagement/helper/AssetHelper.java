@@ -6,6 +6,7 @@ import com.ideas2it.companymanagement.assetmanagement.entity.AssetDetails;
 import com.ideas2it.companymanagement.assetmanagement.entity.AssetType;
 import com.ideas2it.companymanagement.employeemanagement.dto.EmployeeDto;
 import com.ideas2it.companymanagement.employeemanagement.entity.Employee;
+import com.ideas2it.companymanagement.employeemanagement.helper.EmployeeHelper;
 import com.ideas2it.companymanagement.util.DateUtil;
 
 public class AssetHelper {
@@ -14,21 +15,6 @@ public class AssetHelper {
         AssetType assetType = new AssetType();
         if (assetTypeDto != null) {
             assetType.setAssetType(assetTypeDto.getAssetType());
-            if (assetTypeDto.getId() != 0) {
-                assetType.setId(assetTypeDto.getId());
-            }
-            assetType.setAssetDetails(assetDetailsDtoToAssetDetails(assetTypeDto.getAssetDetailsDto()));
-            AssetDetailsDto assetDetailsDto = assetTypeDto.getAssetDetailsDto();
-            AssetDetails assetDetails = new AssetDetails();
-            if (assetDetailsDto.getId() != 0) {
-                assetDetails.setId(assetDetailsDto.getId());
-            }
-            if (assetDetailsDto != null) {
-                assetDetails.setAssetName(assetDetailsDto.getAssetName());
-                assetDetails.setId(assetDetailsDto.getId());
-                assetDetails.setSerialNumber(assetDetailsDto.getSerialNumber());
-                assetType.setAssetDetails(assetDetails);
-            }
             if (assetTypeDto.getId() != 0) {
                 assetType.setId(assetTypeDto.getId());
             }
@@ -44,14 +30,6 @@ public class AssetHelper {
             if (assetType.getId() != 0) {
                 assetTypeDto.setId(assetType.getId());
             }
-            AssetDetails assetDetails = assetType.getAssetDetails();
-            if (assetDetails != null) {
-                AssetDetailsDto assetDetailsDto = new AssetDetailsDto();
-                assetDetailsDto.setId(assetDetails.getId());
-                assetDetailsDto.setAssetName(assetDetails.getAssetName());
-                assetDetailsDto.setSerialNumber(assetDetails.getSerialNumber());
-                assetTypeDto.setAssetDetailsDto(assetDetailsDto);
-            }
             if (assetType.getId() != 0) {
                 assetTypeDto.setId(assetType.getId());
             }
@@ -62,6 +40,7 @@ public class AssetHelper {
     public static AssetDetails assetDetailsDtoToAssetDetails(AssetDetailsDto assetDetailsDto) {
         AssetDetails assetDetails = new AssetDetails();
         if (assetDetailsDto != null) {
+            assetDetails.setId(assetDetailsDto.getId());
             assetDetails.setAssetName(assetDetailsDto.getAssetName());
             assetDetails.setSerialNumber(assetDetailsDto.getSerialNumber());
             AssetTypeDto assetTypeDto = assetDetailsDto.getAssetDto();
@@ -97,6 +76,7 @@ public class AssetHelper {
     public static AssetDetailsDto assetDetailsToAssetDetailsDto(AssetDetails assetDetails) {
         AssetDetailsDto assetDetailsDto = new AssetDetailsDto();
         if (assetDetails != null) {
+            assetDetailsDto.setId(assetDetails.getId());
             assetDetailsDto.setAssetName(assetDetails.getAssetName());
             assetDetailsDto.setSerialNumber(assetDetails.getSerialNumber());
             AssetType assetType = assetDetails.getAssetType();

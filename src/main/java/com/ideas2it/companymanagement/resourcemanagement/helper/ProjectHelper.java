@@ -23,9 +23,9 @@ public class ProjectHelper {
                 projectDto.setId(project.getId());
             }
             projectDto.setProjectName(project.getProjectName());
-            if (projectDto.getId() != 0) {
+            /*if (projectDto.getId() != 0) {
                 project.setId(projectDto.getId());
-            }
+            }*/
             projectDto.setProjectDescription(project.getProjectDescription());
             Employee employee = project.getEmployee();
             if (employee != null) {

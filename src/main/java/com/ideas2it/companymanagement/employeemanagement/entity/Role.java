@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -25,5 +26,5 @@ public class Role {
     @Column
     private String role;
     @OneToMany(mappedBy = "role")
-    private List<Employee> employees;
+    private List<Employee> employees = new ArrayList<>();
 }

@@ -36,7 +36,7 @@ public class Project implements Serializable {
     private String projectName;
 
     @OneToOne
-    @JoinColumn(name = "manager_id")
+    @JoinColumn(name = "manager_id",referencedColumnName = "id")
     private Employee employee;
 
     @OneToMany(mappedBy = "project")

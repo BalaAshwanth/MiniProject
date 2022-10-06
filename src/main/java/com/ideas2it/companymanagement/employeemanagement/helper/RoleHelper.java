@@ -18,6 +18,7 @@ public class RoleHelper {
             List<EmployeeDto> employeesDto = roleDto.getEmployeesDto();
             for (EmployeeDto employeeDtoDetails : employeesDto) {
                 Employee employee = new Employee();
+                employee.setId(employeeDtoDetails.getId());
                 employee.setEmployeeId(employeeDtoDetails.getEmployeeId());
                 employee.setEmployeeName(employeeDtoDetails.getEmployeeName());
                 employee.setDesignation(employeeDtoDetails.getDesignation());
@@ -29,6 +30,7 @@ public class RoleHelper {
                 int experience = DateUtil.getYearBetweenDate(employeeDtoDetails.getDateOfJoining());
                 employee.setExperience(experience);
                 int age = DateUtil.getYearBetweenDate(employeeDtoDetails.getDateOfBirth());
+                employee.setRole(role);
                 employee.setAge(age);
                 employees.add(employee);
             }
@@ -47,6 +49,7 @@ public class RoleHelper {
         List<Employee> employees = role.getEmployees();
         for (Employee employeeDetails : employees) {
             EmployeeDto employeeDto = new EmployeeDto();
+            employeeDto.setId(employeeDetails.getId());
             employeeDto.setEmployeeId(employeeDetails.getEmployeeId());
             employeeDto.setEmployeeName(employeeDetails.getEmployeeName());
             employeeDto.setDesignation(employeeDetails.getDesignation());
@@ -55,10 +58,12 @@ public class RoleHelper {
             employeeDto.setEmailId(employeeDetails.getEmailId());
             employeeDto.setPhoneNumber(employeeDetails.getPhoneNumber());
             employeeDto.setDateOfJoining(employeeDetails.getDateOfJoining());
+            employeeDto.setRoleDto(roleDto);
             int experience = DateUtil.getYearBetweenDate(employeeDetails.getDateOfJoining());
             employeeDto.setExperience(experience);
             int age = DateUtil.getYearBetweenDate(employeeDetails.getDateOfBirth());
             employeeDto.setAge(age);
+            employeeDto.setRoleDto(roleDto);
             employeesDto.add(employeeDto);
         }
         roleDto.setEmployeesDto(employeesDto);

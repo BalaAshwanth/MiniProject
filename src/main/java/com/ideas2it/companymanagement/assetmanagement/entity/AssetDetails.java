@@ -1,5 +1,7 @@
 package com.ideas2it.companymanagement.assetmanagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.ideas2it.companymanagement.employeemanagement.entity.Employee;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,14 +12,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Table(name = "asset_details")
 @Setter
-@Getter
+@Getter@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class AssetDetails {
 
     @Id
@@ -30,7 +31,7 @@ public class AssetDetails {
     @Column(name = "serial_number")
     private String serialNumber;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "asset_id", referencedColumnName = "id")
     private AssetType assetType;
 
