@@ -1,5 +1,7 @@
 package com.ideas2it.companymanagement.employeemanagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -9,11 +11,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Data
 @Table(name = "role_details")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,5 +26,5 @@ public class Role {
     @Column
     private String role;
     @OneToMany(mappedBy = "role")
-    private List<Employee> employees;
+    private List<Employee> employees = new ArrayList<>();
 }

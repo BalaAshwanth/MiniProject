@@ -1,5 +1,7 @@
 package com.ideas2it.companymanagement.employeemanagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.ideas2it.companymanagement.assetmanagement.entity.AssetDetails;
 import com.ideas2it.companymanagement.resourcemanagement.entity.Project;
 import com.ideas2it.companymanagement.seatmanagement.entity.Seat;
@@ -26,6 +28,7 @@ import java.util.List;
 @Entity
 @RequiredArgsConstructor
 @Table(name = "employee_details")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -13,5 +14,5 @@ import java.util.List;
 public class RoleDto {
     private int id;
     private String role;
-    private List<EmployeeDto> employeesDto;
+    private List<EmployeeDto> employeesDto = new ArrayList<>();
 }

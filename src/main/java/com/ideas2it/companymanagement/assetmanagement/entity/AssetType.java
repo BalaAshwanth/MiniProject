@@ -1,5 +1,7 @@
 package com.ideas2it.companymanagement.assetmanagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,8 +18,8 @@ import java.io.Serializable;
 @Table(name = "asset")
 @Getter
 @Setter
-public class AssetType implements Serializable {
-
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+public class AssetType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

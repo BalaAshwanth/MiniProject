@@ -6,7 +6,6 @@ import com.ideas2it.companymanagement.assetmanagement.entity.AssetDetails;
 import com.ideas2it.companymanagement.assetmanagement.entity.AssetType;
 import com.ideas2it.companymanagement.employeemanagement.dto.EmployeeDto;
 import com.ideas2it.companymanagement.employeemanagement.entity.Employee;
-import com.ideas2it.companymanagement.employeemanagement.helper.EmployeeHelper;
 import com.ideas2it.companymanagement.util.DateUtil;
 
 public class AssetHelper {
@@ -97,6 +96,7 @@ public class AssetHelper {
     }
 
     public static AssetDetailsDto assetDetailsToAssetDetailsDto(AssetDetails assetDetails) {
+        System.out.println("it is coming");
         AssetDetailsDto assetDetailsDto = new AssetDetailsDto();
         if (assetDetails != null) {
             assetDetailsDto.setId(assetDetails.getId());

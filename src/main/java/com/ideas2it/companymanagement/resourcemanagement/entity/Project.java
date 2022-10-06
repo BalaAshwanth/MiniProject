@@ -1,6 +1,8 @@
 package com.ideas2it.companymanagement.resourcemanagement.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.ideas2it.companymanagement.employeemanagement.entity.Employee;
 import lombok.Data;
 
@@ -21,7 +23,8 @@ import java.util.List;
  */
 @Entity
 @Data
-public class Project implements Serializable {
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -34,7 +37,7 @@ public class Project implements Serializable {
 
     //bi-directional many-to-one association to EmployeeDetail
     @OneToOne
-    @JoinColumn(name = "manager_id")
+    @JoinColumn(name = "manager_id", referencedColumnName = "id")
     private Employee employee;
 
     //bi-directional many-to-one association to Resource
