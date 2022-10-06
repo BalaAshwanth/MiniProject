@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,12 +29,12 @@ public class AssetController {
     }
 
     @PostMapping
-    private AssetTypeDto insertAsset(AssetTypeDto assetDto) {
+    private AssetTypeDto insertAsset(@RequestBody AssetTypeDto assetDto) {
         return assetService.setAsset(assetDto);
     }
 
     @PutMapping
-    private AssetTypeDto updateAsset(AssetTypeDto assetDto) {
+    private AssetTypeDto updateAsset(@RequestBody AssetTypeDto assetDto) {
         return assetService.updateAsset(assetDto);
     }
 

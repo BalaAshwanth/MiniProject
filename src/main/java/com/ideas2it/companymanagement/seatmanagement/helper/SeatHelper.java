@@ -2,6 +2,8 @@ package com.ideas2it.companymanagement.seatmanagement.helper;
 
 import com.ideas2it.companymanagement.employeemanagement.dto.EmployeeDto;
 import com.ideas2it.companymanagement.employeemanagement.entity.Employee;
+import com.ideas2it.companymanagement.employeemanagement.helper.RoleHelper;
+import com.ideas2it.companymanagement.resourcemanagement.helper.ProjectHelper;
 import com.ideas2it.companymanagement.seatmanagement.dto.SeatDto;
 import com.ideas2it.companymanagement.seatmanagement.entity.Seat;
 import com.ideas2it.companymanagement.util.DateUtil;
@@ -60,6 +62,9 @@ public class SeatHelper {
                 employeeDto.setExperience(experience);
                 int age = DateUtil.getYearBetweenDate(employee.getDateOfBirth());
                 employeeDto.setAge(age);
+                employeeDto.setSeatDto(seatDto);
+                employeeDto.setProjectDto(ProjectHelper.projectToProjectDto(employee.getProject()));
+                employeeDto.setRoleDto(RoleHelper.roleToRoleDto(employee.getRole()));
                 seatDto.setEmployeeDto(employeeDto);
             }
         }

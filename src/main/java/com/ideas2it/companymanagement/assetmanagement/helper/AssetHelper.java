@@ -6,6 +6,7 @@ import com.ideas2it.companymanagement.assetmanagement.entity.AssetDetails;
 import com.ideas2it.companymanagement.assetmanagement.entity.AssetType;
 import com.ideas2it.companymanagement.employeemanagement.dto.EmployeeDto;
 import com.ideas2it.companymanagement.employeemanagement.entity.Employee;
+import com.ideas2it.companymanagement.employeemanagement.helper.EmployeeHelper;
 import com.ideas2it.companymanagement.util.DateUtil;
 
 public class AssetHelper {
@@ -17,20 +18,17 @@ public class AssetHelper {
             if (assetTypeDto.getId() != 0) {
                 assetType.setId(assetTypeDto.getId());
             }
-            assetType.setAssetDetails(assetDetailsDtoToAssetDetails(assetTypeDto.getAssetDetailsDto()));
             AssetDetailsDto assetDetailsDto = assetTypeDto.getAssetDetailsDto();
             AssetDetails assetDetails = new AssetDetails();
-            if (assetDetailsDto.getId() != 0) {
-                assetDetails.setId(assetDetailsDto.getId());
-            }
             if (assetDetailsDto != null) {
+                if (assetDetailsDto.getId() != 0) {
+                    assetDetails.setId(assetDetailsDto.getId());
+                }
                 assetDetails.setAssetName(assetDetailsDto.getAssetName());
                 assetDetails.setId(assetDetailsDto.getId());
                 assetDetails.setSerialNumber(assetDetailsDto.getSerialNumber());
+                assetDetails.setAssetType(assetType);
                 assetType.setAssetDetails(assetDetails);
-            }
-            if (assetTypeDto.getId() != 0) {
-                assetType.setId(assetTypeDto.getId());
             }
         }
 
@@ -50,6 +48,8 @@ public class AssetHelper {
                 assetDetailsDto.setId(assetDetails.getId());
                 assetDetailsDto.setAssetName(assetDetails.getAssetName());
                 assetDetailsDto.setSerialNumber(assetDetails.getSerialNumber());
+                assetDetailsDto.setAssetDto(assetTypeDto);
+   //             assetDetailsDto.setEmployeeDto(EmployeeHelper.employeeToEmployeeDto(assetDetails.getEmployee()));
                 assetTypeDto.setAssetDetailsDto(assetDetailsDto);
             }
             if (assetType.getId() != 0) {
@@ -62,12 +62,14 @@ public class AssetHelper {
     public static AssetDetails assetDetailsDtoToAssetDetails(AssetDetailsDto assetDetailsDto) {
         AssetDetails assetDetails = new AssetDetails();
         if (assetDetailsDto != null) {
+            assetDetails.setId(assetDetailsDto.getId());
             assetDetails.setAssetName(assetDetailsDto.getAssetName());
             assetDetails.setSerialNumber(assetDetailsDto.getSerialNumber());
             AssetTypeDto assetTypeDto = assetDetailsDto.getAssetDto();
             AssetType assetType = new AssetType();
             assetType.setId(assetTypeDto.getId());
             assetType.setAssetType(assetTypeDto.getAssetType());
+            assetType.setAssetDetails(assetDetails);
             assetDetails.setAssetType(assetType);
             EmployeeDto employeeDto = assetDetailsDto.getEmployeeDto();
             if (employeeDto != null) {
@@ -97,6 +99,7 @@ public class AssetHelper {
     public static AssetDetailsDto assetDetailsToAssetDetailsDto(AssetDetails assetDetails) {
         AssetDetailsDto assetDetailsDto = new AssetDetailsDto();
         if (assetDetails != null) {
+            assetDetailsDto.setId(assetDetails.getId());
             assetDetailsDto.setAssetName(assetDetails.getAssetName());
             assetDetailsDto.setSerialNumber(assetDetails.getSerialNumber());
             AssetType assetType = assetDetails.getAssetType();
@@ -104,6 +107,7 @@ public class AssetHelper {
                 AssetTypeDto assetTypeDto = new AssetTypeDto();
                 assetTypeDto.setId(assetType.getId());
                 assetTypeDto.setAssetType(assetType.getAssetType());
+                assetTypeDto.setAssetDetailsDto(assetDetailsDto);
                 assetDetailsDto.setAssetDto(assetTypeDto);
                 Employee employee = assetDetails.getEmployee();
                 if (employee != null) {

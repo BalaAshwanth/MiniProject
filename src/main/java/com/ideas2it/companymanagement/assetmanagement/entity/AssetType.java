@@ -10,12 +10,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "asset")
 @Getter
 @Setter
-public class AssetType {
+public class AssetType implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

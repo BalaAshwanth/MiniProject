@@ -54,9 +54,11 @@ public class EmployeeHelper {
                     AssetType assetType = new AssetType();
                     assetType.setId(assetTypeDto.getId());
                     assetType.setAssetType(assetTypeDto.getAssetType());
+                    assetDetail.setId(assetDetailDto.getId());
                     assetDetail.setAssetType(assetType);
                     assetDetail.setAssetName(assetDetailDto.getAssetName());
                     assetDetail.setSerialNumber(assetDetailDto.getSerialNumber());
+                    assetDetail.setEmployee(employee);
                     assetDetails.add(assetDetail);
                 }
                 employee.setAssetDetails(assetDetails);
@@ -122,8 +124,11 @@ public class EmployeeHelper {
                 assetTypeDto.setId(assetType.getId());
                 assetTypeDto.setAssetType(assetType.getAssetType());
                 assetDetailDto.setAssetDto(assetTypeDto);
+                assetDetailDto.setId(assetDetail.getId());
                 assetDetailDto.setAssetName(assetDetail.getAssetName());
                 assetDetailDto.setSerialNumber(assetDetail.getSerialNumber());
+                assetTypeDto.setAssetDetailsDto(assetDetailDto);
+                assetDetailDto.setEmployeeDto(employeeDto);
                 assetDetailsDto.add(assetDetailDto);
             }
             employeeDto.setAssetDetailsDto(assetDetailsDto);

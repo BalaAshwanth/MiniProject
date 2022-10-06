@@ -18,6 +18,7 @@ public class RoleHelper {
             List<EmployeeDto> employeesDto = roleDto.getEmployeesDto();
             for (EmployeeDto employeeDtoDetails : employeesDto) {
                 Employee employee = new Employee();
+                employee.setId(employeeDtoDetails.getId());
                 employee.setEmployeeId(employeeDtoDetails.getEmployeeId());
                 employee.setEmployeeName(employeeDtoDetails.getEmployeeName());
                 employee.setDesignation(employeeDtoDetails.getDesignation());
@@ -47,6 +48,7 @@ public class RoleHelper {
         List<Employee> employees = role.getEmployees();
         for (Employee employeeDetails : employees) {
             EmployeeDto employeeDto = new EmployeeDto();
+            employeeDto.setId(employeeDetails.getId());
             employeeDto.setEmployeeId(employeeDetails.getEmployeeId());
             employeeDto.setEmployeeName(employeeDetails.getEmployeeName());
             employeeDto.setDesignation(employeeDetails.getDesignation());
@@ -59,6 +61,7 @@ public class RoleHelper {
             employeeDto.setExperience(experience);
             int age = DateUtil.getYearBetweenDate(employeeDetails.getDateOfBirth());
             employeeDto.setAge(age);
+            employeeDto.setRoleDto(roleDto);
             employeesDto.add(employeeDto);
         }
         roleDto.setEmployeesDto(employeesDto);
