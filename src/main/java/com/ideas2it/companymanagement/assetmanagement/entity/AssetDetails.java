@@ -1,5 +1,7 @@
 package com.ideas2it.companymanagement.assetmanagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.ideas2it.companymanagement.employeemanagement.entity.Employee;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,6 +20,7 @@ import javax.persistence.Table;
 @Table(name = "asset_details")
 @Setter
 @Getter
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class AssetDetails {
 
     @Id

@@ -1,5 +1,7 @@
 package com.ideas2it.companymanagement.seatmanagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.ideas2it.companymanagement.employeemanagement.entity.Employee;
 import lombok.Data;
 
@@ -20,6 +22,8 @@ import java.io.Serializable;
 @Entity
 @Table(name = "allocation_details")
 @Data
+
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Seat implements Serializable {
 
     @Id

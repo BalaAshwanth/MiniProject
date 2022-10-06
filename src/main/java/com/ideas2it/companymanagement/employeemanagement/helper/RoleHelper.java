@@ -29,6 +29,7 @@ public class RoleHelper {
                 int experience = DateUtil.getYearBetweenDate(employeeDtoDetails.getDateOfJoining());
                 employee.setExperience(experience);
                 int age = DateUtil.getYearBetweenDate(employeeDtoDetails.getDateOfBirth());
+                employee.setRole(role);
                 employee.setAge(age);
                 employees.add(employee);
             }
@@ -55,6 +56,7 @@ public class RoleHelper {
             employeeDto.setEmailId(employeeDetails.getEmailId());
             employeeDto.setPhoneNumber(employeeDetails.getPhoneNumber());
             employeeDto.setDateOfJoining(employeeDetails.getDateOfJoining());
+            employeeDto.setRoleDto(roleDto);
             int experience = DateUtil.getYearBetweenDate(employeeDetails.getDateOfJoining());
             employeeDto.setExperience(experience);
             int age = DateUtil.getYearBetweenDate(employeeDetails.getDateOfBirth());
