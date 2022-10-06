@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * <p>
+ * Controller that handles the CRUD Operations.
+ * </p>
+ */
 @RestController
 @RequestMapping("/seat")
 public class AllocationController {
@@ -22,29 +27,71 @@ public class AllocationController {
         this.allocationService = allocationService;
     }
 
+    /**
+     * <p>
+     * Creates new allocation and sends to allocation service.
+     * </p>
+     *
+     * @param seatDto
+     * @return SeatDto
+     */
     @PostMapping
     public SeatDto addAllocation(@RequestBody SeatDto seatDto) {
-        return allocationService.insertSeatAllocation(seatDto);
+        return allocationService.insertSeat(seatDto);
     }
 
+    /**
+     * <p>
+     * Searches and deletes allocation based on the given id.
+     * </p>
+     *
+     * @param id
+     * @return SeatDto
+     *
+     */
     @GetMapping("/{id}")
     public SeatDto getAllocationById(@PathVariable("id") int id) {
-        return allocationService.getSeatById(id);
+        return allocationService.getSeat(id);
     }
 
+    /**
+     * <p>
+     * retrieves all allocation .
+     * </p>
+     *
+     * @return List<SeatDto>
+     *
+     */
     @GetMapping
     public List<SeatDto> getAllocation() {
-        return allocationService.getSeatDetails();
+        return allocationService.getAllSeat();
     }
 
+    /**
+     * <p>
+     * Initiates the process of updating allocation.
+     * </p>
+     *
+     * @param seatDto
+     * @return SeatDto
+     */
     @PutMapping
     public SeatDto updateAllocation(@RequestBody SeatDto seatDto) {
         return allocationService.updateSeat(seatDto);
     }
 
+    /**
+     * <p>
+     * Searches and deletes seat based on the given id.
+     * </p>
+     *
+     * @param id
+     * @return String
+     *
+     */
     @DeleteMapping("/{id}")
     public String deleteSeat(@PathVariable("id") int id) {
-        if (allocationService.deleteEmployeeById(id)) {
+        if (allocationService.deleteSeat(id)) {
             return "Deleted";
         } else {
             return "Try again";

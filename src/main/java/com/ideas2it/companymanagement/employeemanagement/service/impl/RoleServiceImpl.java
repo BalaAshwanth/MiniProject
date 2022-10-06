@@ -13,6 +13,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * <p>
+ * Implementation for handling all business logics of role model.
+ * </p>
+ */
 @Service
 public class RoleServiceImpl implements RoleService {
     private final RoleRepository roleRepository;
@@ -25,6 +30,9 @@ public class RoleServiceImpl implements RoleService {
      * <p>
      * This method is used to set RoleDto objects to Role.
      * </p>
+     *
+     * @param roleDto
+     * @return RoleDto
      */
     public RoleDto addRole(RoleDto roleDto) {
         return RoleHelper.roleToRoleDto(roleRepository.save(RoleHelper.roleDtoToRole(roleDto)));
@@ -34,6 +42,8 @@ public class RoleServiceImpl implements RoleService {
      * <p>
      * This method is used to get all Role details from database.
      * </p>
+     *
+     * @return List<RoleDto>
      */
     public List<RoleDto> getRoleDetails() {
         final Logger LOG = LoggerFactory.getLogger(RoleServiceImpl.class);
@@ -42,7 +52,7 @@ public class RoleServiceImpl implements RoleService {
             LOG.info("There is no Role Details Present");
         }
         return employees.stream().
-                map(employee -> RoleHelper.roleToRoleDto(employee)
+                map(RoleHelper::roleToRoleDto
                 ).collect(Collectors.toList());
     }
 
@@ -50,6 +60,9 @@ public class RoleServiceImpl implements RoleService {
      * <p>
      * This method is used to get a Role details by Id(primary key in database)
      * </p>
+     *
+     * @param id
+     * @return RoleDto
      */
     public RoleDto getRoleDetailsById(int id) {
         RoleDto roleDto = null;
@@ -64,6 +77,9 @@ public class RoleServiceImpl implements RoleService {
      * <p>
      * This method is used to delete a Role details by Id(primary key in database)
      * </p>
+     *
+     * @param id
+     * @return boolean
      */
     public boolean deleteRoleDetailsById(int id) {
         if (roleRepository.existsById(id)) {
@@ -77,6 +93,9 @@ public class RoleServiceImpl implements RoleService {
      * <p>
      * This method is used to update Role details
      * </p>
+     *
+     * @param roleDto
+     * @return RoleDto
      */
     public RoleDto updateRoleDetails(RoleDto roleDto) {
         return RoleHelper.roleToRoleDto(roleRepository.save(RoleHelper.roleDtoToRole(roleDto)));

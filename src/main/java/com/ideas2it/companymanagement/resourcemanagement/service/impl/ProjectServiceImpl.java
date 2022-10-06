@@ -10,6 +10,11 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <p>
+ * Implementation for handling all business logics of project model.
+ * </p>
+ */
 @Service
 public class ProjectServiceImpl implements ProjectService {
 
@@ -19,20 +24,52 @@ public class ProjectServiceImpl implements ProjectService {
         this.projectRepo = projectRepo;
     }
 
+    /**
+     * <p>
+     * Retrieves project detail from repository by id.
+     * </p>
+     *
+     * @param projectId
+     * @return ProjectDto
+     */
     public ProjectDto getProjectDetails(int projectId) {
         return ProjectHelper.projectToProjectDto(projectRepo.findById(projectId).orElse(null));
     }
 
+    /**
+     * <p>
+     * This is to updates the project detail.
+     * </p>
+     *
+     * @param projectDto
+     * @return ProjectDto
+     */
     public ProjectDto updateProjectDetails(ProjectDto projectDto) {
         return ProjectHelper.projectToProjectDto(projectRepo.save(ProjectHelper
                 .projectDtoToProject(projectDto)));
     }
 
+    /**
+     * <p>
+     * This method is used to set project detail dto objects to project detail.
+     * </p>
+     *
+     * @param projectDto
+     * @return ProjectDto
+     */
     public ProjectDto insertProjectDetails(ProjectDto projectDto) {
         return ProjectHelper.projectToProjectDto(projectRepo.save(ProjectHelper
                 .projectDtoToProject(projectDto)));
     }
 
+    /**
+     * <p>
+     * Deletes project detail by id.
+     * </p>
+     *
+     * @param projectId
+     * @return boolean
+     */
     public boolean deleteProjectDetails(int projectId) {
         if (projectRepo.existsById(projectId)) {
             projectRepo.deleteById(projectId);
@@ -41,6 +78,13 @@ public class ProjectServiceImpl implements ProjectService {
         return false;
     }
 
+    /**
+     * <p>
+     * Retrieves all project detail from the database.
+     * </p>
+     *
+     * @return List<ProjectDto>
+     */
     public List<ProjectDto> getAllProjectDetails() {
         List<Project> projects = projectRepo.findAll();
         List<ProjectDto> projectsDto = new ArrayList<>();

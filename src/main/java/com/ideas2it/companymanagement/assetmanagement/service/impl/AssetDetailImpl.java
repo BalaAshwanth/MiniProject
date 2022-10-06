@@ -9,6 +9,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * <p>
+ * Implementation for handling all business logics of asset model
+ * </p>
+ */
 @Service
 public class AssetDetailImpl implements AssetDetailService {
 
@@ -18,16 +23,42 @@ public class AssetDetailImpl implements AssetDetailService {
         this.assetDetailRepo = assetDetailRepo;
     }
 
+    /**
+     * <p>
+     * This method is used to set asset detail dto objects to asset detail.
+     * </p>
+     *
+     * @param assetDetailsDto
+     * @return AssetDetailDto
+     */
     @Override
     public AssetDetailsDto setAssertDetails(AssetDetailsDto assetDetailsDto) {
         return AssetHelper.assetDetailsToAssetDetailsDto(assetDetailRepo.save(AssetHelper.assetDetailsDtoToAssetDetails(assetDetailsDto)));
     }
 
+    /**
+     * <p>
+     * Retrieves asset detail from repository by id.
+     * </p>
+     *
+     * @param id
+     * @return AssetDetailDto
+     *
+     */
     @Override
     public AssetDetailsDto getAssetDetails(int id) {
         return AssetHelper.assetDetailsToAssetDetailsDto(assetDetailRepo.findById(id).orElse(null));
     }
 
+    /**
+     * <p>
+     * Deletes asset detail by id.
+     * </p>
+     *
+     * @param id
+     * @return boolean
+     *
+     */
     @Override
     public boolean deleteAssetDetails(int id) {
         if (assetDetailRepo.existsById(id)) {
@@ -37,11 +68,27 @@ public class AssetDetailImpl implements AssetDetailService {
         return false;
     }
 
+    /**
+     * <p>
+     * This is to updates the asset detail
+     * </p>
+     *
+     * @param assetDetailsDto
+     * @return AssetDetailsDto
+     *
+     */
     @Override
     public AssetDetailsDto updateAssetDetails(AssetDetailsDto assetDetailsDto) {
         return AssetHelper.assetDetailsToAssetDetailsDto(assetDetailRepo.save(AssetHelper.assetDetailsDtoToAssetDetails(assetDetailsDto)));
     }
 
+    /**
+     * <p>
+     * Retrieves all asset detail from the database.
+     * </p>
+     *
+     * @return List<AssetDetailsDto>
+     */
     @Override
     public List<AssetDetailsDto> getAllAssetDetails() {
         return assetDetailRepo.findAll().stream().map(AssetHelper::assetDetailsToAssetDetailsDto).collect(Collectors.toList());

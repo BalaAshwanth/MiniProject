@@ -11,6 +11,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * <p>
+ * Implementation for handling all business logics of asset model
+ * </p>
+ */
 @Service
 public class AllocationServiceImpl implements AllocationService {
     private final AllocationRepository allocationRepository;
@@ -19,20 +24,49 @@ public class AllocationServiceImpl implements AllocationService {
         this.allocationRepository = allocationRepository;
     }
 
-    public SeatDto insertSeatAllocation(SeatDto allocationDto) {
-        return SeatHelper.changeSeatAllocationToDto(allocationRepository.save(SeatHelper.changeDtoToAllocationDetail(allocationDto)));
+    /**
+     * <p>
+     * This method is used to save allocation dto objects to seat detail.
+     * </p>
+     *
+     * @param seatDto
+     *
+     * @return SeatDto
+     */
+    public SeatDto insertSeat(SeatDto seatDto) {
+        return SeatHelper.changeSeatAllocationToDto(allocationRepository.save(SeatHelper.changeDtoToAllocationDetail(seatDto)));
     }
 
-    public SeatDto getSeatById(int id) {
-        SeatDto allocationDto = null;
+    /**
+     * <p>
+     * Retrieves seat from repository by id.
+     * </p>
+     *
+     * @param id
+     *
+     * @return seatDto
+     *
+     */
+    public SeatDto getSeat(int id) {
+        SeatDto seatDto = null;
         Optional<Seat> allocationDetail = allocationRepository.findById(id);
         if (allocationDetail.isPresent()) {
-            allocationDto = SeatHelper.changeSeatAllocationToDto(allocationDetail.get());
+            seatDto = SeatHelper.changeSeatAllocationToDto(allocationDetail.get());
         }
-        return allocationDto;
+        return seatDto;
     }
 
-    public boolean deleteEmployeeById(int id) {
+    /**
+     * <p>
+     * Deletes seat detail by id.
+     * </p>
+     *
+     * @param id
+     *
+     * @return boolean
+     *
+     */
+    public boolean deleteSeat(int id) {
         if (allocationRepository.existsById(id)) {
             allocationRepository.deleteById(id);
             return true;
@@ -40,11 +74,28 @@ public class AllocationServiceImpl implements AllocationService {
         return false;
     }
 
+    /**
+     * <p>
+     * This is to update the seat detail.
+     * </p>
+     *
+     * @param allocationDto
+     *
+     * @return SeatDto
+     *
+     */
     public SeatDto updateSeat(SeatDto allocationDto) {
         return SeatHelper.changeSeatAllocationToDto(allocationRepository.save(SeatHelper.changeDtoToAllocationDetail(allocationDto)));
     }
 
-    public List<SeatDto> getSeatDetails() {
+    /**
+     * <p>
+     * Retrieves all seat detail from the database.
+     * </p>
+     *
+     * @return  List<SeatDto>
+     */
+    public List<SeatDto> getAllSeat() {
         return allocationRepository.findAll().stream()
                 .map(SeatHelper::changeSeatAllocationToDto).collect(Collectors.toList());
     }

@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * <p>
+ * Controller that handles the CRUD Operations.
+ * </p>
+ */
 @RestController
 @RequestMapping("/asset")
 public class AssetController {
@@ -22,28 +27,69 @@ public class AssetController {
         this.assetService = assetService;
     }
 
+    /**
+     * <p>
+     * Searches and retrieves asset based on the given id
+     * </p>
+     *
+     * @param id
+     * @return AssetTypeDto.
+     *
+     */
     @GetMapping("/{assetId}")
     private AssetTypeDto getAsset(@PathVariable("assetId") int id) {
         return assetService.getAsset(id);
     }
 
+    /**
+     * <p>
+     * Creates new asset and sends to Asset service
+     * </p>
+     *
+     * @param assetDto
+     * @return AssetTypeDto.
+     */
     @PostMapping
     private AssetTypeDto insertAsset(AssetTypeDto assetDto) {
         return assetService.setAsset(assetDto);
     }
 
+    /**
+     * <p>
+     * Initiates the process of updating asset.
+     * </p>
+     *
+     * @param assetDto
+     * @return AssetTypeDto
+     */
     @PutMapping
     private AssetTypeDto updateAsset(AssetTypeDto assetDto) {
         return assetService.updateAsset(assetDto);
     }
 
+    /**
+     * <p>
+     * Searches and deletes asset based on the given id.
+     * </p>
+     *
+     * @param id
+     * @return boolean
+     *
+     */
     @DeleteMapping("/{assetId}")
     private Boolean deleteAsset(@PathVariable("assetId") int id) {
         return assetService.deleteAsset(id);
     }
 
-    @GetMapping
-    private List<AssetTypeDto> getAllAssets() {
-        return assetService.getAllAssetDetails();
+    /**
+     * <p>
+     * retrieves all assets.
+     * </p>
+     *
+     * @return List<AssetTypeDto>
+     *
+     */
+    @GetMapping private List<AssetTypeDto> getAllAssets() {
+        return assetService.getAllAsset();
     }
 }

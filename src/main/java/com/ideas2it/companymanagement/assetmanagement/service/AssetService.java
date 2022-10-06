@@ -14,5 +14,5 @@ public interface AssetService {
 
     AssetTypeDto updateAsset(AssetTypeDto assetDto);
 
-    List<AssetTypeDto> getAllAssetDetails();
+    List<AssetTypeDto> getAllAsset();
 }

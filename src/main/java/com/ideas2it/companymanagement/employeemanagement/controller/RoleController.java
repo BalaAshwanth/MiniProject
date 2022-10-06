@@ -14,6 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * <p>
+ * Controller that handles the CRUD Operations.
+ * </p>
+ */
 @RestController
 @RequestMapping("/role")
 @CrossOrigin
@@ -28,6 +33,9 @@ public class RoleController {
      * <p>
      * this method is to add Role details to database
      * </p>
+     *
+     * @param roleDto
+     * @return RoleDto
      */
     @PostMapping
     public RoleDto insertRole(@RequestBody RoleDto roleDto) {
@@ -38,6 +46,9 @@ public class RoleController {
      * <p>
      * this method is to get Role By Id(primary key).
      * </p>
+     *
+     * @param id
+     * @return RoleDto
      */
     @GetMapping("/{id}")
     public RoleDto getRoleById(@PathVariable("id") int id) {
@@ -48,6 +59,8 @@ public class RoleController {
      * <p>
      * this method is to get all Role Details
      * </p>
+     *
+     * @return List<RoleDto>
      */
     @GetMapping
     public List<RoleDto> getAllRoles() {
@@ -58,6 +71,9 @@ public class RoleController {
      * <p>
      * this method is to add Role to database
      * </p>
+     *
+     * @param roleDto
+     * @return RoleDto
      */
     @PutMapping
     public RoleDto updateRole(@RequestBody RoleDto roleDto) {
@@ -68,6 +84,9 @@ public class RoleController {
      * <p>
      * this method is to delete Role Details
      * </p>
+     *
+     * @param id
+     * @return boolean
      */
     @DeleteMapping("/{id}")
     public boolean deleteRole(@PathVariable("id") int id) {
