@@ -1,12 +1,13 @@
 package com.ideas2it.companymanagement.employeemanagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.ideas2it.companymanagement.assetmanagement.entity.AssetDetails;
 import com.ideas2it.companymanagement.resourcemanagement.entity.Project;
 import com.ideas2it.companymanagement.seatmanagement.entity.Seat;
+
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,6 +25,7 @@ import java.util.List;
 
 @Data
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @RequiredArgsConstructor
 @Table(name = "employee_details")
 public class Employee {

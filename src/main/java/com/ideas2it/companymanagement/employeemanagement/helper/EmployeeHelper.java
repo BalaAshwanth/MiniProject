@@ -68,6 +68,7 @@ public class EmployeeHelper {
                 project.setId(projectDto.getId());
                 project.setProjectName(projectDto.getProjectName());
                 project.setProjectDescription(projectDto.getProjectDescription());
+                project.setEmployee(employee);
                 employee.setProject(project);
             }
 
@@ -134,6 +135,7 @@ public class EmployeeHelper {
                 projectDto.setId(project.getId());
                 projectDto.setProjectName(project.getProjectName());
                 projectDto.setProjectDescription(project.getProjectDescription());
+                projectDto.setEmployeeDto(employeeDto);
                 employeeDto.setProjectDto(projectDto);
             }
 

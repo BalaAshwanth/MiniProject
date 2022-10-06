@@ -1,5 +1,7 @@
 package com.ideas2it.companymanagement.employeemanagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -12,6 +14,7 @@ import javax.persistence.Table;
 import java.util.List;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @Data
 @Table(name = "role_details")
 public class Role {

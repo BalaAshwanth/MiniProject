@@ -15,7 +15,7 @@ public class DatabaseConfiguration {
         dataSourceBuilder.driverClassName("com.mysql.cj.jdbc.Driver");
         dataSourceBuilder.url("jdbc:mysql://localhost:3306/company_management");
         dataSourceBuilder.username("root");
-        dataSourceBuilder.password("098098");
+        dataSourceBuilder.password("harini@04");
         return dataSourceBuilder.build();
 
     }
