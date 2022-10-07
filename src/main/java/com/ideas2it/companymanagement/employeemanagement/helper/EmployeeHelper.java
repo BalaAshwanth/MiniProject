@@ -41,7 +41,6 @@ public class EmployeeHelper {
                 Seat seat = new Seat();
                 seat.setId(seatDto.getId());
                 seat.setSeatNumber(seatDto.getSeatNumber());
-                seat.setEmployee(employee);
                 employee.setSeat(seat);
             }
 
@@ -50,15 +49,9 @@ public class EmployeeHelper {
             if (assetDetailsDto != null) {
                 for (AssetDetailsDto assetDetailDto : assetDetailsDto) {
                     AssetDetails assetDetail = new AssetDetails();
-                    AssetTypeDto assetTypeDto = assetDetailDto.getAssetDto();
-                    AssetType assetType = new AssetType();
-                    assetType.setId(assetTypeDto.getId());
-                    assetType.setAssetType(assetTypeDto.getAssetType());
                     assetDetail.setId(assetDetailDto.getId());
-                    assetDetail.setAssetType(assetType);
                     assetDetail.setAssetName(assetDetailDto.getAssetName());
                     assetDetail.setSerialNumber(assetDetailDto.getSerialNumber());
-                    assetDetail.setEmployee(employee);
                     assetDetails.add(assetDetail);
 
                 }
@@ -71,49 +64,6 @@ public class EmployeeHelper {
                 project.setId(projectDto.getId());
                 project.setProjectName(projectDto.getProjectName());
                 project.setProjectDescription(projectDto.getProjectDescription());
-                if (projectDto.getEmployeeDto() != null) {
-                    EmployeeDto currentEmployeeDto = projectDto.getEmployeeDto();
-                    Employee currentEmployee = new Employee();
-                    if (currentEmployeeDto.getId() != 0) {
-                        currentEmployee.setId(currentEmployeeDto.getId());
-                    }
-                    currentEmployee.setEmployeeId(currentEmployeeDto.getEmployeeId());
-                    currentEmployee.setEmployeeName(currentEmployeeDto.getEmployeeName());
-                    currentEmployee.setDesignation(currentEmployeeDto.getDesignation());
-                    currentEmployee.setDateOfBirth(currentEmployeeDto.getDateOfBirth());
-                    currentEmployee.setGender(currentEmployeeDto.getGender());
-                    currentEmployee.setEmailId(currentEmployeeDto.getEmailId());
-                    currentEmployee.setPhoneNumber(currentEmployeeDto.getPhoneNumber());
-                    currentEmployee.setDateOfJoining(currentEmployeeDto.getDateOfJoining());
-                    experience = DateUtil.getYearBetweenDate(currentEmployeeDto.getDateOfJoining());
-                    currentEmployee.setExperience(experience);
-                    age = DateUtil.getYearBetweenDate(currentEmployeeDto.getDateOfBirth());
-                    currentEmployee.setAge(age);
-                    project.setEmployee(currentEmployee);
-                }
-                List<Employee> employees = project.getEmployees();
-                List<EmployeeDto> employeesDto = projectDto.getEmployeesDto();
-                for (EmployeeDto currentEmployeeDto : employeesDto) {
-                    Employee currentEmployee = new Employee();
-                    if (currentEmployeeDto.getId() != 0) {
-                        currentEmployee.setId(currentEmployeeDto.getId());
-                    }
-                    currentEmployee.setEmployeeId(currentEmployeeDto.getEmployeeId());
-                    currentEmployee.setEmployeeName(currentEmployeeDto.getEmployeeName());
-                    currentEmployee.setDesignation(currentEmployeeDto.getDesignation());
-                    currentEmployee.setDateOfBirth(currentEmployeeDto.getDateOfBirth());
-                    currentEmployee.setGender(currentEmployeeDto.getGender());
-                    currentEmployee.setEmailId(currentEmployeeDto.getEmailId());
-                    currentEmployee.setPhoneNumber(currentEmployeeDto.getPhoneNumber());
-                    currentEmployee.setDateOfJoining(currentEmployeeDto.getDateOfJoining());
-                    experience = DateUtil.getYearBetweenDate(currentEmployeeDto.getDateOfJoining());
-                    currentEmployee.setExperience(experience);
-                    age = DateUtil.getYearBetweenDate(currentEmployeeDto.getDateOfBirth());
-                    currentEmployee.setAge(age);
-                    employees.add(currentEmployee);
-                }
-                employees.add(employee);
-                employee.setProject(project);
             }
 
             RoleDto roleDto = employeeDto.getRoleDto();
@@ -121,28 +71,6 @@ public class EmployeeHelper {
                 Role role = new Role();
                 role.setId(roleDto.getId());
                 role.setRole(roleDto.getRole());
-                List<Employee> employees = role.getEmployees();
-                List<EmployeeDto> employeesDto = roleDto.getEmployeesDto();
-                for (EmployeeDto currentEmployeeDto : employeesDto) {
-                    Employee currentEmployee = new Employee();
-                    if (currentEmployeeDto.getId() != 0) {
-                        currentEmployee.setId(currentEmployeeDto.getId());
-                    }
-                    currentEmployee.setEmployeeId(currentEmployeeDto.getEmployeeId());
-                    currentEmployee.setEmployeeName(currentEmployeeDto.getEmployeeName());
-                    currentEmployee.setDesignation(currentEmployeeDto.getDesignation());
-                    currentEmployee.setDateOfBirth(currentEmployeeDto.getDateOfBirth());
-                    currentEmployee.setGender(currentEmployeeDto.getGender());
-                    currentEmployee.setEmailId(currentEmployeeDto.getEmailId());
-                    currentEmployee.setPhoneNumber(currentEmployeeDto.getPhoneNumber());
-                    currentEmployee.setDateOfJoining(currentEmployeeDto.getDateOfJoining());
-                    experience = DateUtil.getYearBetweenDate(currentEmployeeDto.getDateOfJoining());
-                    currentEmployee.setExperience(experience);
-                    age = DateUtil.getYearBetweenDate(currentEmployeeDto.getDateOfBirth());
-                    currentEmployee.setAge(age);
-                    employees.add(currentEmployee);
-                }
-                employees.add(employee);
                 employee.setRole(role);
             }
         }
@@ -175,15 +103,9 @@ public class EmployeeHelper {
             List<AssetDetails> assetDetails = employee.getAssetDetails();
             for (AssetDetails assetDetail : assetDetails) {
                 AssetDetailsDto assetDetailDto = new AssetDetailsDto();
-                AssetType assetType = assetDetail.getAssetType();
-                AssetTypeDto assetTypeDto = new AssetTypeDto();
-                assetTypeDto.setId(assetType.getId());
-                assetTypeDto.setAssetType(assetType.getAssetType());
-                assetDetailDto.setAssetDto(assetTypeDto);
                 assetDetailDto.setId(assetDetail.getId());
                 assetDetailDto.setAssetName(assetDetail.getAssetName());
                 assetDetailDto.setSerialNumber(assetDetail.getSerialNumber());
-                assetTypeDto.setAssetDetailsDto(assetDetailDto);
                 assetDetailsDto.add(assetDetailDto);
                 assetDetailDto.setEmployeeDto(employeeDto);
             }
@@ -194,51 +116,7 @@ public class EmployeeHelper {
             if (project != null) {
                 projectDto.setId(project.getId());
                 projectDto.setProjectName(project.getProjectName());
-                if (project.getEmployee() != null) {
-                    Employee currentEmployee = project.getEmployee();
-                    EmployeeDto currentEmployeeDto = new EmployeeDto();
-                    if (currentEmployee.getId() != 0) {
-                        currentEmployeeDto.setId(currentEmployee.getId());
-                    }
-                    currentEmployeeDto.setEmployeeId(currentEmployee.getEmployeeId());
-                    currentEmployeeDto.setEmployeeName(currentEmployee.getEmployeeName());
-                    currentEmployeeDto.setDesignation(currentEmployee.getDesignation());
-                    currentEmployeeDto.setId(currentEmployee.getId());
-                    currentEmployeeDto.setDateOfBirth(currentEmployee.getDateOfBirth());
-                    currentEmployeeDto.setGender(currentEmployee.getGender());
-                    currentEmployeeDto.setEmailId(currentEmployee.getEmailId());
-                    currentEmployeeDto.setPhoneNumber(currentEmployee.getPhoneNumber());
-                    currentEmployeeDto.setDateOfJoining(currentEmployee.getDateOfJoining());
-                    experience = DateUtil.getYearBetweenDate(currentEmployee.getDateOfJoining());
-                    currentEmployeeDto.setExperience(experience);
-                    age = DateUtil.getYearBetweenDate(currentEmployee.getDateOfBirth());
-                    currentEmployeeDto.setAge(age);
-                    projectDto.setEmployeeDto(currentEmployeeDto);
-                }
                 projectDto.setProjectDescription(project.getProjectDescription());
-                List<Employee> employees = project.getEmployees();
-                List<EmployeeDto> employeesDto = projectDto.getEmployeesDto();
-                for (Employee currentEmployee : employees) {
-                    EmployeeDto currentEmployeeDto = new EmployeeDto();
-                    if (currentEmployee.getId() != 0) {
-                        currentEmployeeDto.setId(currentEmployee.getId());
-                    }
-                    currentEmployeeDto.setEmployeeId(currentEmployee.getEmployeeId());
-                    currentEmployeeDto.setEmployeeName(currentEmployee.getEmployeeName());
-                    currentEmployeeDto.setDesignation(currentEmployee.getDesignation());
-                    currentEmployeeDto.setId(currentEmployee.getId());
-                    currentEmployeeDto.setDateOfBirth(currentEmployee.getDateOfBirth());
-                    currentEmployeeDto.setGender(currentEmployee.getGender());
-                    currentEmployeeDto.setEmailId(currentEmployee.getEmailId());
-                    currentEmployeeDto.setPhoneNumber(currentEmployee.getPhoneNumber());
-                    currentEmployeeDto.setDateOfJoining(currentEmployee.getDateOfJoining());
-                    experience = DateUtil.getYearBetweenDate(currentEmployee.getDateOfJoining());
-                    currentEmployeeDto.setExperience(experience);
-                    age = DateUtil.getYearBetweenDate(currentEmployee.getDateOfBirth());
-                    currentEmployeeDto.setAge(age);
-                    employeesDto.add(currentEmployeeDto);
-                }
-                employeesDto.add(employeeDto);
                 employeeDto.setProjectDto(projectDto);
 
             }
@@ -248,41 +126,11 @@ public class EmployeeHelper {
                 RoleDto roleDto = new RoleDto();
                 roleDto.setId(role.getId());
                 roleDto.setRole(role.getRole());
-
-                List<Employee> employees = role.getEmployees();
-                List<EmployeeDto> employeesDto = roleDto.getEmployeesDto();
-                for (Employee currentEmployee : employees) {
-                    EmployeeDto currentEmployeeDto = new EmployeeDto();
-                    if (currentEmployee.getId() != 0) {
-                        currentEmployeeDto.setId(currentEmployee.getId());
-                    }
-                    currentEmployeeDto.setEmployeeId(currentEmployee.getEmployeeId());
-                    currentEmployeeDto.setEmployeeName(currentEmployee.getEmployeeName());
-                    currentEmployeeDto.setDesignation(currentEmployee.getDesignation());
-                    currentEmployeeDto.setId(currentEmployee.getId());
-                    currentEmployeeDto.setDateOfBirth(currentEmployee.getDateOfBirth());
-                    currentEmployeeDto.setGender(currentEmployee.getGender());
-                    currentEmployeeDto.setEmailId(currentEmployee.getEmailId());
-                    currentEmployeeDto.setPhoneNumber(currentEmployee.getPhoneNumber());
-                    currentEmployeeDto.setDateOfJoining(currentEmployee.getDateOfJoining());
-                    experience = DateUtil.getYearBetweenDate(currentEmployee.getDateOfJoining());
-                    currentEmployeeDto.setExperience(experience);
-                    age = DateUtil.getYearBetweenDate(currentEmployee.getDateOfBirth());
-                    currentEmployeeDto.setAge(age);
-                    employeesDto.add(currentEmployeeDto);
-
-                }
-                employeesDto.add(employeeDto);
                 employeeDto.setRoleDto(roleDto);
             }
-            if (employee.getId() != 0) {
-                employeeDto.setId(employee.getId());
-            }
-
             if (seat != null) {
                 seatDto.setId(seat.getId());
                 seatDto.setSeatNumber(seat.getSeatNumber());
-                seatDto.setEmployeeDto(employeeDto);
                 employeeDto.setSeatDto(seatDto);
             }
         }

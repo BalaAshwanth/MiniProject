@@ -1,6 +1,7 @@
 package com.ideas2it.companymanagement.employeemanagement.service.impl;
 
 import com.ideas2it.companymanagement.employeemanagement.dto.EmployeeDto;
+import com.ideas2it.companymanagement.employeemanagement.entity.Employee;
 import com.ideas2it.companymanagement.employeemanagement.helper.EmployeeHelper;
 import com.ideas2it.companymanagement.employeemanagement.repository.EmployeeRepository;
 import com.ideas2it.companymanagement.employeemanagement.service.EmployeeService;
@@ -65,7 +66,12 @@ public class EmployeeServiceImpl implements EmployeeService {
      * </p>
      */
     public EmployeeDto updateEmployeeDetails(EmployeeDto employeeDto) {
-        return EmployeeHelper.employeeToEmployeeDto(employeeRepository
-                .save(EmployeeHelper.employeeDtoToEmployee(employeeDto)));
+        Employee employee = EmployeeHelper.employeeDtoToEmployee(employeeDto);
+        Employee employee1 = employeeRepository.save(employee);
+        EmployeeDto employeeDto1 = EmployeeHelper.employeeToEmployeeDto(employee1);
+     return employeeDto1;
+
+//        return EmployeeHelper.employeeToEmployeeDto(employeeRepository
+//                .save(EmployeeHelper.employeeDtoToEmployee(employeeDto)));
     }
 }

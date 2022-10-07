@@ -61,7 +61,6 @@ public class EmployeeController {
      */
     @PutMapping
     public EmployeeDto updateEmployee(@RequestBody EmployeeDto employeeDto) {
-        System.out.println(employeeDto.getSeatDto().getId());
         return employeeService.updateEmployeeDetails(employeeDto);
     }
 
